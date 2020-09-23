@@ -11,8 +11,3 @@ export const Template = () => ({
     '<search-bar />'
 });
 
-
-
-
-
-
