@@ -9,21 +9,10 @@
 </template>
 
 <script>
+import './styles.css';
 
 export default {
   name: 'LogoFooter',
 
 };
 </script>
-
-<style scoped>
-
-.footer {
-  background-color: #555555;
-}
-
-.logo {
-  height: 20px;
-  margin: 20px;
-}
-</style>

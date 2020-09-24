@@ -35,8 +35,7 @@
 <script>
 
 import Movie from './Movie';
-
-
+import './styles.css';
 
 export default {
   name: 'SearchResult',
@@ -45,19 +44,3 @@ export default {
 
 };
 </script>
-
-<style scoped>
-
-.movies {
-    padding-bottom: 35px;
-    background-color: #232323;
-}
-
-.filter-header {
-  background-color: #555555;
-}
-
-.filter-header .col {
-  margin: 15px;
-}
-</style>

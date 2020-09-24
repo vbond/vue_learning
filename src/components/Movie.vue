@@ -19,7 +19,7 @@
 </template>
 
 <script>
-
+import './styles.css';
 
 export default {
   name: 'Movie',
@@ -45,30 +45,3 @@ export default {
 
 };
 </script>
-
-<style scoped>
-
-.movie figure {
-    width: 354px;
-    height: 100%;
-    margin: 0 2px 5px;
-    padding: 15px 15px 10px;
-    transition: opacity .4s ease-in-out;
-    display: inline-block;
-}
-.movie figure img {
-    width: 324px;
-    height: auto;
-    padding-bottom: 15px;
-    margin-bottom: 5px;
-}
-.movie figure figcaption {
-    font-size: .9rem;
-    color: #444;
-    line-height: 1.5;
-}
-.movie {
-    background-color: #232323;
-}
-
-</style>

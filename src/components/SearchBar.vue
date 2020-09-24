@@ -35,6 +35,7 @@
 
 <script>
 import LogoHeader from './LogoHeader';
+import './styles.css';
 
 export default {
   name: 'SearchBar',
@@ -43,74 +44,3 @@ export default {
 
 };
 </script>
-
-<style scoped>
-
-
-.search-header {
-  background-image: url("../assets/header.png");
-  height: 100%;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.search-header .row {
-  padding-bottom: 30px;
-}
-
-@media (min-width: 576px) {
-  .search-header {
-      max-width: 540px
-  }
-}
-
-@media (min-width: 768px) {
-  .search-header {
-      max-width: 720px
-  }
-}
-
-@media (min-width: 992px) {
-  .search-header {
-      max-width: 960px
-  }
-}
-
-@media (min-width: 1200px) {
-  .search-header {
-      max-width: 1140px
-  }
-}
-
-.form-control {
-  background-color: rgba(35, 35, 35, 0.8);
-  border: 1px solid #232323;
-  line-height: 2;
-}
-
-.form-control:hover, .form-control:active, .form-control:valid {
-  background-color: rgba(35, 35, 35, 0.8);
-  border: 1px solid #232323;
-}
-
-.search-box .btn {
-  line-height: 2;
-}
-
-.btn-secondary {
-  background-color: rgba(35, 35, 35, 0.9);
-  border-color: #232323;
-}
-
-.search-by .btn, .filter-header .btn {
-  line-height: 1;
-}
-
-</style>

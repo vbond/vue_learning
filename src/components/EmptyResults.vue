@@ -16,7 +16,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
 
 .no-found {
     padding: 20px;

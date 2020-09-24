@@ -67,6 +67,7 @@
 import LogoHeader from './LogoHeader';
 import LogoFooter from './LogoFooter';
 import Movie from './Movie';
+import './styles.css';
 
 export default {
   name: 'MovieDetails',
@@ -107,86 +108,3 @@ export default {
  
 };
 </script>
-
-<style scoped>
-
-.filter-header {
-  background-color: #555555;
-}
-
-.filter-header .col {
-  margin: 15px;
-}
-
-.movies {
-    padding-bottom: 35px;
-    background-color: #232323;
-}
-
-.movie-details {
-  background-color: #232323;
-}
-
-.movie-header {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #000;
-}
-
-@media (min-width: 576px) {
-  .movie-header {
-      max-width: 540px
-  }
-}
-
-@media (min-width: 768px) {
-  .movie-header {
-      max-width: 720px
-  }
-}
-
-@media (min-width: 992px) {
-  .movie-header {
-      max-width: 960px
-  }
-}
-
-@media (min-width: 1200px) {
-  .movie-header {
-      max-width: 1140px
-  }
-}
-.movie-header .logo {
-  height: 20px;
-  margin: 20px;
-}
-.movie-header .movie-img {
-  width: 324px;
-  height: auto;
-  padding-bottom: 15px;
-  margin-bottom: 5px;
-}
-.badge {
-  line-height: 1.5;
-  padding: 0.5rem;
-  font-weight: normal;
-  min-width: 65px;
-}
-
-.badge-outline-primary {
-  color: #405189;
-  border: 1px solid #405189
-}
-
-.badge.badge-pill {
-  border-radius: 50%;
-}
-
-.badge-outline-info {
-  color: #a1e66f;
-  border: 1px solid #555555;
-}
-
-</style>

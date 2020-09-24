@@ -9,18 +9,10 @@
 </template>
 
 <script>
+import './styles.css';
 
 export default {
   name: 'LogoHeader',    
 
 };
 </script>
-
-<style scoped>
-
-.logo {
-  height: 20px;
-  margin: 20px;
-}
-
-</style>
