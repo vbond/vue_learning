@@ -1,0 +1,176 @@
+.movies {
+    padding-bottom: 35px;
+    background-color: #232323;
+}
+
+.filter-header {
+  background-color: #555555;
+}
+
+.filter-header .col {
+  margin: 15px;
+}
+
+.search-header {
+    background-image: url("../assets/header.png");
+    height: 100%;
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .search-header .row {
+    padding-bottom: 30px;
+  }
+  
+  @media (min-width: 576px) {
+    .search-header {
+        max-width: 540px
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .search-header {
+        max-width: 720px
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .search-header {
+        max-width: 960px
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .search-header {
+        max-width: 1140px
+    }
+  }
+  
+  .form-control {
+    background-color: rgba(35, 35, 35, 0.8);
+    border: 1px solid #232323;
+    line-height: 2;
+  }
+  
+  .form-control:hover, .form-control:active, .form-control:valid {
+    background-color: rgba(35, 35, 35, 0.8);
+    border: 1px solid #232323;
+  }
+  
+  .search-box .btn {
+    line-height: 2;
+  }
+  
+  .btn-secondary {
+    background-color: rgba(35, 35, 35, 0.9);
+    border-color: #232323;
+  }
+  
+  .search-by .btn, .filter-header .btn {
+    line-height: 1;
+  }
+  
+  .movie-details {
+    background-color: #232323;
+  }
+  
+  .movie-header {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #000;
+  }
+  
+  @media (min-width: 576px) {
+    .movie-header {
+        max-width: 540px
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .movie-header {
+        max-width: 720px
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .movie-header {
+        max-width: 960px
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .movie-header {
+        max-width: 1140px
+    }
+  }
+  .movie-header .logo {
+    height: 20px;
+    margin: 20px;
+  }
+  .movie-header .movie-img {
+    width: 324px;
+    height: auto;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+  }
+  .badge {
+    line-height: 1.5;
+    padding: 0.5rem;
+    font-weight: normal;
+    min-width: 65px;
+  }
+  
+  .badge-outline-primary {
+    color: #405189;
+    border: 1px solid #405189
+  }
+  
+  .badge.badge-pill {
+    border-radius: 50%;
+  }
+  
+  .badge-outline-info {
+    color: #a1e66f;
+    border: 1px solid #555555;
+  }
+
+.movie figure {
+    width: 354px;
+    height: 100%;
+    margin: 0 2px 5px;
+    padding: 15px 15px 10px;
+    transition: opacity .4s ease-in-out;
+    display: inline-block;
+}
+.movie figure img {
+    width: 324px;
+    height: auto;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+}
+.movie figure figcaption {
+    font-size: .9rem;
+    color: #444;
+    line-height: 1.5;
+}
+.movie {
+    background-color: #232323;
+}
+
+.footer {
+  background-color: #555555;
+}
+  
+.logo {
+  height: 20px;
+  margin: 20px;
+}
