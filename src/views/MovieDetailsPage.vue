@@ -1,12 +1,12 @@
 <template>
   <div>
-    <movie-details :movieData="movie" :similarMovies="similarMovies" />
+    <movie-details :movieData="movieById(id)" :similarMovies="similarMovies(id)" />
   </div>
 </template>
 
 <script>
 import MovieDetails from "@/components/MovieDetails";
-import movies from "@/assets/movies.json";
+import { mapGetters } from "vuex";
 
 export default {
   name: "MovieDetailsPage",
@@ -14,15 +14,9 @@ export default {
   components: { MovieDetails },
 
   computed: {
-    movie() {
-      return movies.find(movie => `${movie.id}` === this.$route.params.id);
-    },
-    similarMovies() {
-      const genres = movies.find(movie => `${movie.id}` === this.$route.params.id).genres;
-      return movies.filter(movie => movie.genres
-        .filter(genre => genres.includes(genre))
-        .length && (`${movie.id}` !== this.$route.params.id)
-      );
+    ...mapGetters(['movieById', 'similarMovies']),
+    id () {
+      return this.$route.params.id;
     }
   }
 };
