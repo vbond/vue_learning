@@ -1,21 +1,19 @@
 <template>
-
     <div class="movie">
         <figure>
-            <img :src="image">
+            <img @click="onClick" :src="movieData.poster_path">
             <figcaption>
                 <div class="row">
-                    <div class="col-sm-9"><h4 class="text-secondary font-weight-light">{{ name }}</h4>
-                        <p class="text-secondary font-weight-light">{{ genre }}</p></div>
+                    <div class="col-sm-9"><h4 class="text-secondary font-weight-light">{{ movieData.title }}</h4>
+                        <p class="text-secondary font-weight-light">{{ movieData.genres.join(' & ') }}</p></div>
                     <div class="col-sm-3 float-right">
-                        <button type="button" class="btn btn-sm btn-outline-secondary float-right">{{ year }}
+                        <button @click="onClick" type="button" class="btn btn-sm btn-outline-secondary float-right">{{ movieData.release_date }}
                         </button>
                     </div>
                 </div>
             </figcaption>
         </figure>
     </div>
-                       
 </template>
 
 <script>
@@ -25,23 +23,14 @@ export default {
   name: 'Movie',
 
   props: {
-    image: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    genre: {
-      type: String,
-      required: true,
-    },
-    year: {
-      type: Number,
-      required: true,
-    }
+    movieData: Object
   },
+
+  methods: {
+    onClick () {
+      this.$router.push('/movie/' + this.movieData.id)
+    }
+  }
 
 };
 </script>

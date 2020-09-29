@@ -13,6 +13,5 @@ import './styles.css';
 
 export default {
   name: 'LogoFooter',
-
 };
 </script>
