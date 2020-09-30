@@ -73,6 +73,12 @@
     border-color: #232323;
   }
   
+  .btn-secondary:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
   .search-by .btn, .filter-header .btn {
     line-height: 1;
   }

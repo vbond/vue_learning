@@ -10,10 +10,11 @@
     </div>
     <div class="row justify-content-md-center search-box">
         <div class="col col-lg-7">
-            <input type="text" class="form-control text-light" placeholder="Search" name="search">
+            <input type="text" class="form-control text-light" placeholder="Search" 
+            v-model="searchValue" @keyup.enter="searchMovies"/>
         </div>
         <div class="col col-lg-3">
-            <button type="button" class="btn btn-danger btn-block">Search</button>
+            <button type="button" class="btn btn-danger btn-block" @click="searchMovies">Search</button>
         </div>
 
     </div>
@@ -23,8 +24,10 @@
         </div>
         <div class="col col-lg-8">
             <div class="btn-group" role="group" aria-label="Search by">
-                <button type="button" class="btn btn-danger text-uppercase">Title</button>
-                <button type="button" class="btn btn-secondary text-uppercase">Genre</button>
+                <button type="button" class="btn text-uppercase" :class="isTitleSelected ? 'btn-danger' : 'btn-secondary'"
+                 @click="titleClick" >Title</button>
+                <button type="button" class="btn text-uppercase" :class="isTitleSelected ? 'btn-secondary' : 'btn-danger'"
+                 @click="genreClick" >Genre</button>
             </div>
         </div>
 
@@ -42,5 +45,26 @@ export default {
 
   components: { LogoHeader },
 
+  data: () => {
+    return {
+      isTitleSelected: true,
+      searchValue: ''
+    }
+  },
+
+  methods: {
+    titleClick () {
+      this.isTitleSelected = true
+    },
+    genreClick () {
+      this.isTitleSelected = false
+    },
+    searchMovies () {
+      this.$emit('searchMovies', {
+        searchValue: this.searchValue.trim().toLowerCase(),
+        isTitleSelected: this.isTitleSelected
+      })
+    }
+  }
 };
 </script>
