@@ -24,9 +24,9 @@
         </div>
         <div class="col col-lg-8">
             <div class="btn-group" role="group" aria-label="Search by">
-                <button type="button" class="btn text-uppercase" :class="isTitleSelected ? 'btn-danger' : 'btn-secondary'"
+                <button type="button" class="btn text-uppercase" :class="isSearchByTitle ? 'btn-danger' : 'btn-secondary'"
                  @click="titleClick" >Title</button>
-                <button type="button" class="btn text-uppercase" :class="isTitleSelected ? 'btn-secondary' : 'btn-danger'"
+                <button type="button" class="btn text-uppercase" :class="isSearchByTitle ? 'btn-secondary' : 'btn-danger'"
                  @click="genreClick" >Genre</button>
             </div>
         </div>
@@ -38,33 +38,37 @@
 
 <script>
 import LogoHeader from './LogoHeader';
-import './styles.css';
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: 'SearchBar',
 
   components: { LogoHeader },
 
+  computed: {
+    ...mapState(['isSearchByTitle'])
+  },
+
   data: () => {
     return {
-      isTitleSelected: true,
       searchValue: ''
     }
   },
 
   methods: {
+    ...mapMutations(['PERFORM_SEARCH', 'SORT_SEARCH_RESULT']),
     titleClick () {
-      this.isTitleSelected = true
+      this.$store.commit('SET_SEARCH_BY_TITLE', true);
     },
     genreClick () {
-      this.isTitleSelected = false
+      this.$store.commit('SET_SEARCH_BY_TITLE', false);
     },
     searchMovies () {
-      this.$emit('searchMovies', {
-        searchValue: this.searchValue.trim().toLowerCase(),
-        isTitleSelected: this.isTitleSelected
-      })
+      this.PERFORM_SEARCH(this.searchValue.trim().toLowerCase());
+      this.SORT_SEARCH_RESULT();
     }
   }
 };
 </script>
+
+<style src="./styles.css"/>

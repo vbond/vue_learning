@@ -2,7 +2,7 @@
   
   <div class="row">
         <div class="col">
-            <img @click="onClick" src="../assets/movielogo.png" class="logo" alt="Netflix Roulette logo">
+            <img @click="onClick" src="@/assets/movielogo.png" class="logo" alt="Netflix Roulette logo">
         </div>
     </div>
 

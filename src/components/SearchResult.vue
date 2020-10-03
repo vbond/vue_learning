@@ -9,9 +9,9 @@
         </div>
         <div class="col col-lg-3">
             <div class="btn-group" role="group" aria-label="Search by">
-                <button type="button" class="btn text-uppercase" :class="isReleaseDateSelected ? 'btn-danger' : 'btn-secondary'"
+                <button type="button" class="btn text-uppercase" :class="isSortByRate ? 'btn-secondary' : 'btn-danger'"
                  @click="releaseDateClick" >Release date</button>
-                <button type="button" class="btn text-uppercase" :class="isReleaseDateSelected ? 'btn-secondary' : 'btn-danger'"
+                <button type="button" class="btn text-uppercase" :class="isSortByRate ? 'btn-danger' : 'btn-secondary'"
                  @click="ratingClick" >Rating</button>
             </div>
         </div>
@@ -30,31 +30,30 @@
 <script>
 import Movie from "./Movie";
 import EmptyResults from "./EmptyResults";
-import "./styles.css";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   name: "SearchResult",
 
   components: { Movie, EmptyResults },
 
-  props: {
-    movies: Array
+  computed: {
+    ...mapState(['isSortByRate', 'movies'])
   },
-  data: () => {
-    return {
-      isReleaseDateSelected: true
-    }
-  },
+
   methods: {
+    ...mapMutations(['SET_SORT_BY_RATE', 'SORT_SEARCH_RESULT']),
     releaseDateClick () {
-        this.isReleaseDateSelected = true;
-        this.$emit('sortMovies', 'release_date')
+        this.SET_SORT_BY_RATE(false);
+        this.SORT_SEARCH_RESULT();
     },
     ratingClick () {
-        this.isReleaseDateSelected = false;
-        this.$emit('sortMovies', 'rating')
+        this.SET_SORT_BY_RATE(true);
+        this.SORT_SEARCH_RESULT();
     }
   }
 
 };
 </script>
+
+<style src="./styles.css"/>
