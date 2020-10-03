@@ -65,7 +65,6 @@
 import LogoHeader from './LogoHeader';
 import LogoFooter from './LogoFooter';
 import Movie from './Movie';
-import './styles.css';
 
 export default {
   name: 'MovieDetails',
@@ -78,3 +77,5 @@ export default {
   }
 };
 </script>
+
+<style src="./styles.css"/>

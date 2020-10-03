@@ -38,7 +38,6 @@
 
 <script>
 import LogoHeader from './LogoHeader';
-import './styles.css';
 import { mapMutations, mapState } from "vuex";
 
 export default {
@@ -71,3 +70,5 @@ export default {
   }
 };
 </script>
+
+<style src="./styles.css"/>

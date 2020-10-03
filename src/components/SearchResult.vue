@@ -30,7 +30,6 @@
 <script>
 import Movie from "./Movie";
 import EmptyResults from "./EmptyResults";
-import "./styles.css";
 import { mapMutations, mapState } from "vuex";
 
 export default {
@@ -56,3 +55,5 @@ export default {
 
 };
 </script>
+
+<style src="./styles.css"/>

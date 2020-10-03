@@ -9,9 +9,10 @@
 </template>
 
 <script>
-import './styles.css';
 
 export default {
   name: 'LogoFooter',
 };
 </script>
+
+<style src="./styles.css"/>

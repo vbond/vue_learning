@@ -17,7 +17,9 @@
 </template>
 
 <script>
-import './styles.css';
+import urlTemplate from 'url-template';
+
+const movieDetailsURITemplate = urlTemplate.parse("/movie/{id}");
 
 export default {
   name: 'Movie',
@@ -28,9 +30,11 @@ export default {
 
   methods: {
     onClick () {
-      this.$router.push('/movie/' + this.movieData.id)
+      this.$router.push(movieDetailsURITemplate.expand({id: this.movieData.id}));
     }
   }
 
 };
 </script>
+
+<style src="./styles.css"/>
