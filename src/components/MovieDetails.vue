@@ -22,13 +22,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col col-md-2">
+                    <div class="col col-md-3">
                         <h4 class="text-danger font-weight-light">{{ movieData.release_date }}</h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col col-md-2">
-                        <h4 class="text-danger font-weight-light">{{ movieData.runtime }}min</h4>
+                    <div class="col col-md-3">
+                        <h4 class="text-danger font-weight-light">{{ movieData.runtime | toMinutes }}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -61,10 +61,13 @@
 </template>
 
 <script>
-
+import Vue from "vue";
 import LogoHeader from './LogoHeader';
 import LogoFooter from './LogoFooter';
 import Movie from './Movie';
+import toMinutesFilter from '@/filters/toMinutes';
+
+Vue.filter('toMinutes', toMinutesFilter.toMinutes)
 
 export default {
   name: 'MovieDetails',

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import SearchPage from "../views/SearchPage.vue";
-import MovieDetailsPage from '../views/MovieDetailsPage.vue';
+import SearchPage from "@/views/SearchPage.vue";
+import MovieDetailsPage from '@/views/MovieDetailsPage.vue';
 
 Vue.use(VueRouter);
 
