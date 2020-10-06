@@ -38,7 +38,7 @@
 
 <script>
 import LogoHeader from './LogoHeader';
-import { mapMutations, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: 'SearchBar',
@@ -46,26 +46,27 @@ export default {
   components: { LogoHeader },
 
   computed: {
-    ...mapState(['isSearchByTitle'])
-  },
-
-  data: () => {
-    return {
-      searchValue: ''
+    ...mapState(['isSearchByTitle']),
+    searchValue: {
+      
+      set (value) {
+        this.$store.commit('SET_SEARCH_VALUE', value)
+      },
+      get () {
+        return this.$store.state.searchParams.search
+      }
     }
   },
 
   methods: {
-    ...mapMutations(['PERFORM_SEARCH', 'SORT_SEARCH_RESULT']),
     titleClick () {
-      this.$store.commit('SET_SEARCH_BY_TITLE', true);
+      this.$store.commit('SET_SEARCH_BY', 'title');
     },
     genreClick () {
-      this.$store.commit('SET_SEARCH_BY_TITLE', false);
+      this.$store.commit('SET_SEARCH_BY', 'genres');
     },
-    searchMovies () {
-      this.PERFORM_SEARCH(this.searchValue.trim().toLowerCase());
-      this.SORT_SEARCH_RESULT();
+    async searchMovies () {
+      await this.$store.dispatch('loadMovies')
     }
   }
 };

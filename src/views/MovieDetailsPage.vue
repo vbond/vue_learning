@@ -1,12 +1,12 @@
 <template>
   <div>
-    <movie-details :movieData="movieById(id)" :similarMovies="similarMovies(id)" />
+    <movie-details :movieData="movieById" :similarMovies="similarMovies" />
   </div>
 </template>
 
 <script>
 import MovieDetails from "@/components/MovieDetails";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "MovieDetailsPage",
@@ -14,10 +14,13 @@ export default {
   components: { MovieDetails },
 
   computed: {
-    ...mapGetters(['movieById', 'similarMovies']),
-    id () {
-      return this.$route.params.id;
-    }
+    ...mapState(['movieById', 'similarMovies']),
+  },
+
+  async mounted () {
+    const id = this.$route.params.id
+    await this.$store.dispatch('loadMovieDetails', id)
   }
+
 };
 </script>

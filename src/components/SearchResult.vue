@@ -38,18 +38,18 @@ export default {
   components: { Movie, EmptyResults },
 
   computed: {
-    ...mapState(['isSortByRate', 'movies'])
+    ...mapState(['movies', 'isSortByRate'])
   },
 
   methods: {
-    ...mapMutations(['SET_SORT_BY_RATE', 'SORT_SEARCH_RESULT']),
-    releaseDateClick () {
-        this.SET_SORT_BY_RATE(false);
-        this.SORT_SEARCH_RESULT();
+    ...mapMutations(['SET_SORT_BY']),
+    async releaseDateClick () {
+        this.SET_SORT_BY("release_date");
+        await this.$store.dispatch('loadMovies')
     },
-    ratingClick () {
-        this.SET_SORT_BY_RATE(true);
-        this.SORT_SEARCH_RESULT();
+    async ratingClick () {
+        this.SET_SORT_BY("vote_average");
+        await this.$store.dispatch('loadMovies')
     }
   }
 

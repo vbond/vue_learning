@@ -14,6 +14,12 @@ import LogoFooter from "@/components/LogoFooter";
 export default {
   name: "SearchPage",
 
-  components: { SearchBar, SearchResult, LogoFooter }
+  components: { SearchBar, SearchResult, LogoFooter },
+
+  async mounted () {
+    this.$store.commit('INIT')
+    await this.$store.dispatch('loadMovies')
+  }
+
 };
 </script>
