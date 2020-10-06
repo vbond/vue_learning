@@ -45,7 +45,7 @@
 
         <div class="row filter-header text-light">
             <div class="col col-lg-6">
-                <h6 class="align-middle font-weight-normal">Films by <span class="font-weight-bold">{{movieData.genres.join(' & ')}}</span> genre</h6>
+                <h6 class="align-middle font-weight-normal">Films by <span class="font-weight-bold">{{movieData.genres ? movieData.genres.join(' & ') : ''}}</span> genre</h6>
             </div>
         </div>
 

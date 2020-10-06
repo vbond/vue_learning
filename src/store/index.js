@@ -1,60 +1,83 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import moviesStore from "@/assets/movies.json";
+import movieApi from '../api/movieApi'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    movies: moviesStore,
+    movies: [],
+    similarMovies: [],
+    movieById: {},
+    searchParams: {},
     isSearchByTitle: true,
     isSortByRate: false
   },
 
-  getters: {
-    movieById: () => id => {
-      return moviesStore.find(movie => `${movie.id}` === id);
-    },
-    similarMovies: (state, getters) => id => {
-      const genres = getters.movieById(id).genres;
-      return moviesStore.filter(movie => movie.genres
-        .filter(genre => genres.includes(genre))
-        .length && (`${movie.id}` !== id)
-      );
-    }
-  },
   mutations: {
-    SET_SEARCH_BY_TITLE(state, value) {
-      state.isSearchByTitle = value;
+    INIT: (state) => {
+      state.searchParams.sortBy = 'release_date'
+      state.searchParams.sortOrder = 'desc'
+      state.searchParams.search = ''
+      state.searchParams.searchBy = 'title'
     },
 
-    PERFORM_SEARCH(state, searchValue) {
-      if (searchValue) {
-        if (state.isSearchByTitle) {
-          state.movies = moviesStore.filter(movie => movie.title.toLowerCase().includes(searchValue))
-        } else {
-          state.movies = moviesStore.filter(movie => movie.genres
-            .filter(genre => genre.toLowerCase().includes(searchValue))
-            .length
-          )
-        }
-      } else {
-        state.movies = moviesStore
+    SET_MOVIE_BY_ID: (state, movie) => {
+      state.movieById = movie
+    },
+
+    SET_MOVIES: (state, movies) => {
+      state.movies = movies
+    },
+
+    SET_SIMILAR_MOVIES: (state, movies) => {
+      state.similarMovies = movies
+    },
+
+    SET_SORT_BY: (state, sortBy) => {
+      state.searchParams.sortBy = sortBy
+      state.isSortByRate = sortBy === 'vote_average'
+    },
+
+    SET_SEARCH_VALUE: (state, searchValue) => {
+      state.searchParams.search = searchValue.trim()
+    },
+
+    SET_SEARCH_BY: (state, searchBy) => {
+      state.searchParams.searchBy = searchBy
+      state.isSearchByTitle = searchBy === 'title'
+    },
+  },
+
+  actions: {
+    loadMovies: async context => {
+      try {
+        const searchParams = context.state.searchParams
+        const searchResult = await movieApi.getMovies(searchParams)
+        context.commit('SET_MOVIES', searchResult.data.data)
+      } catch (err) {
+        console.error(err)
       }
     },
 
-    SET_SORT_BY_RATE(state, value) {
-      state.isSortByRate = value;
-    },
+    loadMovieDetails: async (context, id) => {
+      try {
+        const movieData = await movieApi.getMovieById(id)
+        context.commit('SET_MOVIE_BY_ID', movieData.data)
 
-    SORT_SEARCH_RESULT(state) {
-      if (state.isSortByRate) {
-        state.movies = state.movies.sort((a, b) => b.vote_average - a.vote_average)
-      } else {
-        state.movies = state.movies.sort((a, b) => b.release_date.localeCompare(a.release_date))
+        const searchParams = {
+          sortBy: 'release_date',
+          sortOrder: 'desc',
+          search: movieData.data.genres[0],
+          searchBy: 'genres'
+        };
+        const searchResult = await movieApi.getMovies(searchParams)
+        context.commit('SET_SIMILAR_MOVIES', searchResult.data.data)
+      } catch (err) {
+        console.error(err)
       }
     }
   },
-  actions: {},
+
   modules: {}
 });
