@@ -12,7 +12,7 @@ const routes = [
     component: SearchPage
   },
   {
-    path: '/movie/:id',
+    path: '/movie/:id(\\d+)',
     name: 'MovieDetailsPage',
     component: MovieDetailsPage
   }

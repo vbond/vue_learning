@@ -17,7 +17,7 @@ export default {
   components: { SearchBar, SearchResult, LogoFooter },
 
   async mounted () {
-    this.$store.commit('INIT')
+    this.$store.commit('SET_SEARCH_PARAMS', this.$route.query)
     await this.$store.dispatch('loadMovies')
   }
 

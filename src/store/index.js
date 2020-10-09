@@ -15,11 +15,11 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    INIT: (state) => {
-      state.searchParams.sortBy = 'release_date'
-      state.searchParams.sortOrder = 'desc'
-      state.searchParams.search = ''
-      state.searchParams.searchBy = 'title'
+    SET_SEARCH_PARAMS: (state, params) => {
+      state.searchParams.sortBy = params.sortBy || 'release_date'
+      state.searchParams.sortOrder = params.sortOrder || 'desc'
+      state.searchParams.search = params.search || ''
+      state.searchParams.searchBy = params.searchBy || 'title'
     },
 
     SET_MOVIE_BY_ID: (state, movie) => {
